@@ -5,8 +5,24 @@ def parse_input(user_input):
 
 def add_contact(args, contacts):
     name, phone = args
+
+    if contacts.get(name):
+        return "Contact already exist."
+
     contacts[name] = phone
     return "Contact added."
+
+def list_contacts(contacts):
+    output = ""
+    for name, phone in contacts.items():
+        output = f"{output}Contact:{name} - {phone}\n"
+    return output
+
+def show_phone(args, contacts):
+    name = args[0]
+    phone = contacts.get(name)
+
+    return phone if phone else "Contact not found"
 
 def main():
     contacts = {}
@@ -23,6 +39,12 @@ def main():
                 print("How can I help you?")
             case "add":
                 print(add_contact(args, contacts))
+            case "change":
+                print(add_contact(args, contacts))
+            case "phone":
+                print(show_phone(args, contacts))
+            case "all":
+                print(list_contacts(contacts))
             case _:
                 print("Invalid command.")
 
