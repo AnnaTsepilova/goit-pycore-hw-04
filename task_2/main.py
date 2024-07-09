@@ -31,7 +31,7 @@ def get_cats_info(path: str) -> list | bool:
                 print(f"Warning: absent data on line {key}. Skipping")
                 continue
 
-            ## Check if additional comas on line
+            ## Check if additional commas on line
             if len(data) != 3:
                 print(f"Warning: probably corrupted line {key}. Skipping")
                 continue
